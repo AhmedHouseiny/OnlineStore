@@ -1,0 +1,16 @@
+<% @order_items.each do |item| %>
+
+  <h3><%= item.product.name %></h3>
+  <h5><%= item.product.price %></h5>
+
+
+  <%= form_for item, remote: true do |f| %>
+   Quantity <%= item.quantity%>
+    <%= link_to "Remove Items", order_item_path(item), method: :delete, remote: true%>
+
+  <% end %>
+  <h2>Subtotal: <%= item.total %></h2>
+
+<% end %>
+<%= link_to 'Back', root_path %>
+
